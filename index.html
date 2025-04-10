@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DPMods Typewriter</title>
+  <style>
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      background-color: #111;
+      color: #0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px;
+    }
+    textarea {
+      width: 90%;
+      max-width: 500px;
+      height: 100px;
+      font-size: 18px;
+      padding: 10px;
+      background-color: #222;
+      color: #0f0;
+      border: 1px solid #0f0;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #0f0;
+      color: #111;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 30px;
+    }
+    .output {
+      font-size: 20px;
+      border-top: 1px dashed #0f0;
+      padding-top: 20px;
+      width: 90%;
+      max-width: 500px;
+      min-height: 100px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>DPMods Typewriter</h1>
+  <textarea id="inputText" placeholder="Type your message here..."></textarea>
+  <button onclick="startTyping()">Start Typing</button>
+  <div class="output" id="outputText"></div>
+
+  <script>
+    function startTyping() {
+      const text = document.getElementById('inputText').value;
+      const output = document.getElementById('outputText');
+      output.textContent = '';
+      let i = 0;
+
+      function typeChar() {
+        if (i < text.length) {
+          output.textContent += text.charAt(i);
+          i++;
+          setTimeout(typeChar, 100); // speed of typing
+        }
+      }
+
+      typeChar();
+    }
+  </script>
+</body>
+</html>
